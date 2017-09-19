@@ -1,3 +1,5 @@
+console.log('eea'.split('e').join('w'));
+
 //字符方法
 var v='hello'
 console.log(v.charAt(0)) //h
@@ -27,3 +29,5 @@ var text='cat,bat'
 var pattern=/.at/g //.表示匹配除换行符之外的任何单个字符
 console.log(text.match(pattern)) //[ 'cat', 'bat' ]
 console.log(text.search(pattern)) //0 第一个匹配项的索引
+console.log('a')
+  
