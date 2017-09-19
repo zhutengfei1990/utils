@@ -1,7 +1,7 @@
 /**
  * 模板字符串
  * @param {模板字符串} template 
- * @param {any} map 
+ * @param {object} map 
  */
 function substitude(template,map){
     if(!template) return "";
