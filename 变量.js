@@ -6,3 +6,4 @@ console.log(delete global2)
 
 console.log(global1)
 console.log(global2)
+

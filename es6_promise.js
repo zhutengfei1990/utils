@@ -5,7 +5,7 @@ function loadImageAsync(url) {
             resolve(image);
         };
         image.onerror = function () {
-            reject(new Error('can not load image at' + url));
+            reject(image);
         }
         image.src = url;
     })

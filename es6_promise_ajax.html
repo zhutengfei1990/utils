@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var getJSON = function (url) {
+            var promise = new Promise((resolve, reject) => {
+                var client = new XMLHttpRequest()
+                client.open('get', url)
+                client.onreadystatechange = handler
+                client.responseType = "json"
+                client.setRequestHeader("Accept", "application/json")
+                client.send()
+                function handler() {
+                    if (this.readystate !== 4) {
+                        return;
+                    }
+                    if (this.status === 200) {
+                        resolve(this.response)
+                    } else {
+                        reject(new Error(this.statusText))
+                    }
+                }
+            })
+            return promise
+        }
+
+        getJSON("./package.json").then((json) => {
+            console.log('Contents:', json)
+        }, (error) => {
+            console.error('error', error)
+        })
+    </script>
+</body>
+
+</html>
