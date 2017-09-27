@@ -18,6 +18,8 @@ promise.then(()=>{
     return '第一个then的参数'  //第一个then的返回值传递给第二个then作为参数
 }).then((param)=>{
     console.log('second resolved',param)
+}).catch((error)=>{
+    
 })
 
 console.log('Hi')
