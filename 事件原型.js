@@ -1,35 +1,34 @@
 function Emitter(){
-	this._listenter=[];
+  this._listener = [];
+}
+Emitter.prototype.on = function(eventName, callback){
+  var listener = this._listener[eventName] || [];
+  listener.push(callback);
+  this._listener[eventName] = listener;
 }
 
-Emitter.prototype.bind=function(eventName,callback){
-	var listener=this._listenter[eventName]||[];
-	listener.push(callback)
-	this._listenter[eventName]=listener;
+Emitter.prototype.once = function(eventName, callback){
+  var self = this
+  function wraper(){
+    callback.apply(self, arguments)
+    self.off(eventName)
+  }
+  this.on(eventName, wraper)
 }
 
-Emitter.prototype.trigger=function(eventName){
-	var args=Array.prototype.slice.call(arguments,1);
-	var listener=this._listenter[eventName];
-
-	if(!Array.isArray(listener)) return;
-	listener.forEach(function(callback){
-		try{
-			callback.apply(this,args)
-		}
-		catch(e){
-			console.log(e)
-		}
-	})
+Emitter.prototype.off = function(eventName){
+  this._listener[eventName] = [];
 }
 
-
-var emitter=new Emitter();
-emitter.bind('myevent',function(args1,args2){
-	console.log(args1,args2);
-})
-emitter.bind('myevent',function(args1,args2){
-	console.log(args2,args1);
-})
-
-emitter.trigger('myevent','a','b')
+Emitter.prototype.trigger = function(eventName){
+  var args = Array.prototype.slice.call(arguments, 1);
+  var listener = this._listener[eventName];
+  if(!Array.isArray(listener)) return;
+  listener.forEach((listener) => {
+    try{
+      listener.apply(this, args);
+    }catch(e){
+      console.log(e);
+    }
+  })
+}
