@@ -12,7 +12,7 @@ function dealClickArr2() {
         }, item.delay);
     }, function (err) {  
         console.log('err:' + err);    
-    });
+    });     
 }
 
 dealClickArr2()
