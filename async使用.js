@@ -11,7 +11,7 @@ function dealClickArr2() {
             console.log(total);
         }, item.delay);
     }, function (err) {
-        console.log('err:' + err)
+        console.log('err:' + err);
     })
 }
 
