@@ -10,9 +10,9 @@ function dealClickArr2() {
             done(null);
             console.log(total);
         }, item.delay);
-    }, function (err) {
-        console.log('err:' + err);
-    })
+    }, function (err) {  
+        console.log('err:' + err);    
+    });
 }
 
 dealClickArr2()
